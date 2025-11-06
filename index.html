@@ -1,26 +1,18 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Rentik Rush — streamer & web designer</title>
-  <meta name="description" content="Rentik Rush — streamer from Belarus. TikTok, Boosty, donations, crypto and contacts." />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rentik Rush — Streamer & Designer</title>
+  <meta name="description" content="Rentik Rush — TikTok streamer, designer and creator from Belarus." />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;700;900&display=swap" rel="stylesheet" />
   <style>
     :root {
       --bg: #050608;
-      --bg-soft: #111319;
       --card: #14151c;
-      --stroke-soft: rgba(255, 255, 255, 0.06);
-      --orange: #ff8a2a;
-      --orange-soft: #ffb566;
-      --accent: #ff8a2a;
-      --accent2: #ffdd9a;
       --text: #f5f5f7;
-      --muted: #b1b2c0;
-      --danger: #ff4d4f;
+      --accent1: #ff0050;
+      --accent2: #00f2ea;
     }
 
     * { box-sizing: border-box; }
@@ -28,638 +20,231 @@
     html, body {
       margin: 0;
       padding: 0;
-      height: 100%;
-      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      min-height: 100%;
+      font-family: 'Inter', sans-serif;
       color: var(--text);
       background:
-        radial-gradient(circle at 15% 0%, rgba(255,138,42,0.25) 0, transparent 55%),
-        radial-gradient(circle at 90% 20%, rgba(255,221,154,0.2) 0, transparent 60%),
-        radial-gradient(circle at 0% 80%, rgba(255,80,40,0.35) 0, transparent 55%),
+        radial-gradient(circle at 15% 0%, rgba(255,0,80,0.25) 0, transparent 55%),
+        radial-gradient(circle at 90% 20%, rgba(0,242,234,0.2) 0, transparent 60%),
+        radial-gradient(circle at 0% 80%, rgba(255,0,80,0.35) 0, transparent 55%),
         #050608;
       background-attachment: fixed;
+      overflow-y: auto;
     }
 
-    body {
+    .container {
       display: flex;
       justify-content: center;
-      padding: 32px 16px 48px;
-    }
-
-    .page {
-      width: min(1120px, 100%);
-      background: radial-gradient(circle at 0% 0%, rgba(255,138,42,0.18) 0, transparent 50%),
-                  radial-gradient(circle at 100% 0%, rgba(255,221,154,0.16) 0, transparent 55%),
-                  rgba(9, 10, 16, 0.96);
-      border-radius: 24px;
-      border: 1px solid rgba(255, 255, 255, 0.06);
-      box-shadow:
-        0 24px 60px rgba(0, 0, 0, 0.85),
-        0 0 60px rgba(255, 138, 42, 0.35);
-      padding: 20px 28px 28px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    /* бегущий неон по внешней рамке */
-    .page::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      padding: 2px;
-      border-radius: 24px;
-      background: linear-gradient(120deg, #ff8a2a, #ffdd9a, #ff8a2a, #ffdd9a);
-      background-size: 300% 300%;
-      animation: borderRun 10s linear infinite;
-      mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-      -webkit-mask-composite: xor;
-      mask-composite: exclude;
-      pointer-events: none;
-      opacity: .85;
-    }
-
-    @keyframes borderRun {
-      0%   { background-position: 0% 50%; }
-      100% { background-position: 300% 50%; }
-    }
-
-    .page-inner {
-      position: relative;
-      z-index: 1;
-    }
-
-    /* ШАПКА */
-
-    .topbar {
-      display: flex;
       align-items: center;
-      justify-content: space-between;
-      gap: 16px;
-      padding: 4px 0 12px;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.04);
-      margin-bottom: 18px;
-    }
-
-    .logo {
-      font-weight: 800;
-      font-size: 20px;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--accent);
-    }
-
-    .lang-switch {
-      display: flex;
-      gap: 6px;
-      align-items: center;
-      font-size: 12px;
-      color: var(--muted);
-    }
-
-    .lang-switch span {
-      opacity: .8;
-      margin-right: 4px;
-    }
-
-    .lang-btn {
-      border-radius: 999px;
-      border: 1px solid rgba(255, 255, 255, 0.18);
-      background: transparent;
-      color: var(--muted);
-      padding: 4px 10px;
-      font-size: 11px;
-      cursor: pointer;
-      font-weight: 600;
-    }
-
-    .lang-btn.active {
-      background: linear-gradient(120deg, #ff8a2a, #ffdd9a);
-      color: #1a120b;
-      border-color: transparent;
-      box-shadow: 0 0 14px rgba(255, 138, 42, 0.7);
-    }
-
-    /* ОБЩИЕ СЕКЦИИ */
-
-    .section {
-      margin-bottom: 28px;
-    }
-
-    .section-title {
-      font-size: 24px;
-      font-weight: 800;
-      color: var(--accent);
-      margin-bottom: 8px;
-    }
-
-    .section-sub {
-      font-size: 13px;
-      color: var(--muted);
-      margin-bottom: 16px;
-    }
-
-    /* ОБО МНЕ */
-
-    .about-grid {
-      display: grid;
-      grid-template-columns: minmax(0, 280px) minmax(0, 1fr);
-      gap: 20px;
-      align-items: stretch;
-    }
-
-    .photo-card {
-      position: relative;
-      border-radius: 22px;
-      background: radial-gradient(circle at 0% 0%, rgba(255, 160, 64, 0.35) 0, transparent 60%),
-                  radial-gradient(circle at 100% 100%, rgba(255, 90, 40, 0.45) 0, transparent 60%),
-                  #1b1510;
-      padding: 10px;
-      box-shadow:
-        0 20px 40px rgba(0, 0, 0, 0.8),
-        0 0 40px rgba(255, 120, 40, 0.6);
-      border: 1px solid rgba(255, 180, 120, 0.55);
-      overflow: hidden;
-    }
-
-    /* бегущий неон по рамке фото */
-    .photo-card::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      border-radius: 22px;
-      padding: 2px;
-      background: conic-gradient(
-        from 0deg,
-        rgba(255, 221, 154, 0.7),
-        rgba(255, 138, 42, 0.9),
-        rgba(255, 80, 40, 0.9),
-        rgba(255, 221, 154, 0.7)
-      );
-      background-size: 200% 200%;
-      animation: borderRun 12s linear infinite;
-      mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
-      -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
-      -webkit-mask-composite: xor;
-      mask-composite: exclude;
-      pointer-events: none;
-      opacity: .85;
-    }
-
-    .photo-inner {
-      position: relative;
-      border-radius: 18px;
-      overflow: hidden;
-    }
-
-    .photo-inner img {
-      display: block;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transform: scale(1.02);
-      filter: saturate(1.08);
-    }
-
-    .photo-tag {
-      position: absolute;
-      left: 12px;
-      bottom: 12px;
-      padding: 4px 10px;
-      border-radius: 999px;
-      background: rgba(0, 0, 0, 0.7);
-      color: var(--accent2);
-      font-size: 11px;
-      font-weight: 600;
-      border: 1px solid rgba(255, 180, 120, 0.7);
-      backdrop-filter: blur(6px);
-    }
-
-    .about-main-title {
-      font-size: 28px;
-      font-weight: 800;
-      margin-bottom: 4px;
-    }
-
-    .about-main-sub {
-      font-size: 15px;
-      color: var(--muted);
-      margin-bottom: 12px;
-    }
-
-    .about-badges {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-bottom: 14px;
-    }
-
-    .about-badge {
-      padding: 4px 10px;
-      border-radius: 999px;
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      background: rgba(15, 16, 22, 0.9);
-      font-size: 11px;
-      color: var(--muted);
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .about-badge span {
-      font-size: 13px;
-    }
-
-    .about-text {
-      font-size: 14px;
-      color: var(--muted);
-      line-height: 1.6;
-      max-width: 56rem;
-    }
-
-    /* КНОПКИ-ССЫЛКИ */
-
-    .link-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 16px;
-    }
-
-    .link-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 9px 14px;
-      border-radius: 999px;
-      border: 1px solid rgba(255, 255, 255, 0.16);
-      background: #181922;
-      cursor: pointer;
-      color: #fff;
-      font-size: 13px;
-      font-weight: 600;
-      text-decoration: none;
-      transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease, background 0.18s ease;
-      box-shadow: 0 0 14px rgba(0, 0, 0, 0.7);
-    }
-
-    .link-btn.primary {
-      background: radial-gradient(circle at 0% 0%, #ffdd9a, #ff8a2a);
-      color: #1a120b;
-      border-color: transparent;
-      box-shadow:
-        0 0 18px rgba(255, 138, 42, 0.9),
-        0 14px 26px rgba(0, 0, 0, 0.85);
-    }
-
-    .link-btn:hover {
-      transform: translateY(-1px);
-      border-color: rgba(255, 200, 140, 0.8);
-      box-shadow:
-        0 0 18px rgba(255, 180, 120, 0.85),
-        0 18px 32px rgba(0, 0, 0, 0.9);
-      background: linear-gradient(120deg, #ff9b3d, #ffdd9a);
-      color: #1a120b;
-    }
-
-    .link-badge {
-      font-size: 11px;
-      opacity: .85;
-    }
-
-    /* КАРТОЧКИ ДЛЯ ДОНАТОВ */
-
-    .cards-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 14px;
+      flex-direction: column;
+      padding: 40px 20px;
+      min-height: 100vh;
     }
 
     .card {
       background: var(--card);
-      border-radius: 16px;
-      border: 1px solid var(--stroke-soft);
-      padding: 12px 14px;
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-      box-shadow: 0 18px 32px rgba(0, 0, 0, 0.7);
+      border-radius: 20px;
+      padding: 30px;
+      max-width: 800px;
+      width: 100%;
+      box-shadow: 0 0 25px rgba(255,0,80,0.4), 0 0 35px rgba(0,242,234,0.3);
+      border: 1px solid rgba(255,255,255,0.1);
       position: relative;
+      overflow: hidden;
+      animation: fadeIn 1s ease;
     }
 
-    .card-title {
-      font-size: 13px;
-      font-weight: 700;
-      color: var(--accent2);
-      display: flex;
-      align-items: center;
-      gap: 6px;
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
-    .card-title span.icon {
-      font-size: 15px;
+    .pfp {
+      width: 160px;
+      height: 160px;
+      border-radius: 20px;
+      overflow: hidden;
+      margin: 0 auto 20px;
+      border: 2px solid rgba(255,255,255,0.2);
+      box-shadow: 0 0 25px rgba(255,0,80,0.6), 0 0 25px rgba(0,242,234,0.5);
     }
 
-    .card-desc {
-      font-size: 12px;
-      color: var(--muted);
+    .pfp img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
 
-    .card-value {
-      font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-      font-size: 11px;
-      color: #ffd7aa;
-      background: rgba(10,10,12,0.95);
-      border-radius: 10px;
-      padding: 6px 8px;
-      word-break: break-all;
-      border: 1px solid rgba(255, 196, 140, 0.4);
+    h1 {
+      text-align: center;
+      font-size: 36px;
+      margin: 10px 0;
+      background: linear-gradient(90deg, var(--accent1), var(--accent2));
+      -webkit-background-clip: text;
+      color: transparent;
     }
 
-    .copy-inline {
-      margin-top: 4px;
-      font-size: 11px;
-      color: var(--orange-soft);
-      cursor: pointer;
-      opacity: .9;
-    }
-
-    .copy-inline:hover {
-      text-decoration: underline;
-    }
-
-    /* КОНТАКТЫ */
-
-    .contacts-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 12px;
-    }
-
-    .contact-btn {
-      border-radius: 14px;
-      border: 1px solid rgba(255,255,255,0.14);
-      padding: 10px 12px;
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
-      background: #15151f;
-      text-decoration: none;
-      color: var(--text);
-      font-size: 13px;
-      box-shadow: 0 14px 26px rgba(0,0,0,0.7);
-      transition: transform .18s, box-shadow .18s, border-color .18s, background .18s;
-    }
-
-    .contact-btn:hover {
-      transform: translateY(-2px);
-      background: #191a25;
-      border-color: rgba(255,200,150,0.9);
-      box-shadow: 0 18px 34px rgba(0,0,0,0.9);
-    }
-
-    .contact-title {
+    .subtitle {
+      text-align: center;
       font-weight: 600;
+      color: #aaa;
+      margin-bottom: 20px;
     }
 
-    .contact-sub {
-      font-size: 11px;
-      color: var(--muted);
+    .badges {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 8px;
+      margin-bottom: 25px;
+    }
+
+    .badge {
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 999px;
+      padding: 6px 12px;
+      font-size: 13px;
+      font-weight: 600;
+      color: #fff;
+    }
+
+    .buttons {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 30px;
+    }
+
+    .btn {
+      padding: 10px 18px;
+      border-radius: 12px;
+      text-decoration: none;
+      font-weight: 700;
+      letter-spacing: 0.3px;
+      border: 1px solid rgba(255,255,255,0.15);
+      font-size: 14px;
+      color: #fff;
+      transition: 0.25s;
+      box-shadow: 0 0 12px rgba(255,0,80,0.4), 0 0 20px rgba(0,242,234,0.3);
+    }
+
+    .btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 0 20px rgba(255,0,80,0.8), 0 0 25px rgba(0,242,234,0.7);
+    }
+
+    .btn.primary {
+      background: linear-gradient(90deg, var(--accent1), var(--accent2));
+      border: none;
+      color: #fff;
+    }
+
+    .wallets {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 15px;
+    }
+
+    .wallet {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 14px;
+      padding: 16px;
+      text-align: center;
+      font-size: 13px;
+      color: #fff;
+      box-shadow: 0 0 15px rgba(255,0,80,0.3), 0 0 20px rgba(0,242,234,0.25);
+    }
+
+    .wallet .address {
+      word-break: break-all;
+      color: var(--accent2);
+      font-weight: 600;
+      margin: 6px 0;
+    }
+
+    .copy-btn {
+      background: #111;
+      color: #fff;
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 8px;
+      padding: 6px 10px;
+      font-size: 12px;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    .copy-btn:hover {
+      background: #222;
+      box-shadow: 0 0 10px rgba(255,0,80,0.5), 0 0 15px rgba(0,242,234,0.4);
     }
 
     footer {
-      margin-top: 22px;
-      padding-top: 10px;
-      border-top: 1px solid rgba(255,255,255,0.06);
-      font-size: 11px;
-      color: var(--muted);
       text-align: center;
+      color: #aaa;
+      font-size: 12px;
+      margin-top: 20px;
+      text-shadow: 0 0 12px rgba(0,242,234,0.6), 0 0 20px rgba(255,0,80,0.6);
     }
 
-    footer span.brand {
-      color: var(--accent);
-      font-weight: 600;
-    }
-
-    @media (max-width: 900px) {
-      .about-grid {
-        grid-template-columns: 1fr;
-      }
-      .photo-card {
-        max-width: 340px;
-      }
-      .cards-grid {
-        grid-template-columns: repeat(2,minmax(0,1fr));
-      }
-      .contacts-grid {
-        grid-template-columns: repeat(2,minmax(0,1fr));
-      }
-    }
-
-    @media (max-width: 640px) {
-      body {
-        padding: 16px 10px 32px;
-      }
-      .page {
-        padding: 16px 14px 20px;
-        border-radius: 18px;
-      }
-      .page::before {
-        border-radius: 18px;
-      }
-      .section-title {
-        font-size: 20px;
-      }
-      .cards-grid,
-      .contacts-grid {
-        grid-template-columns: 1fr;
-      }
-      .topbar {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 8px;
-      }
-      .logo {
-        font-size: 18px;
-      }
+    @media (max-width: 600px) {
+      h1 { font-size: 28px; }
+      .card { padding: 20px; }
     }
   </style>
 </head>
 <body>
-  <div class="page">
-    <div class="page-inner">
-      <header class="topbar">
-        <div class="logo">RENTIK RUSH</div>
-        <div class="lang-switch">
-          <span>Язык:</span>
-          <button class="lang-btn active">RU</button>
-          <button class="lang-btn">EN</button>
-          <!-- пока декоративные, без смены текста -->
+  <div class="container">
+    <div class="card">
+      <div class="pfp">
+        <img src="./photo_2025-06-15_23-19-36 (2).jpg" alt="Rentik Rush Avatar">
+      </div>
+      <h1>Rentik Rush</h1>
+      <div class="subtitle">CREATOR • STREAMER • DESIGNER</div>
+
+      <div class="badges">
+        <span class="badge">🇧🇾 Belarus</span>
+        <span class="badge">🎥 TikTok Live PRO</span>
+        <span class="badge">💻 Web Designer</span>
+      </div>
+
+      <div class="buttons">
+        <a href="https://www.tiktok.com/@rentikrussh/" target="_blank" class="btn primary">TikTok</a>
+        <a href="https://boosty.to/rentikrush" target="_blank" class="btn">Boosty</a>
+        <a href="https://boosty.to/rentikrush/single-payment/donation/407427/target?share=target_link" target="_blank" class="btn">Donate</a>
+      </div>
+
+      <div class="wallets">
+        <div class="wallet">
+          <div>USDT (TRC20)</div>
+          <div class="address" id="trc20">TQyqYGDD5Peacbr1vVf8MEczYkhs2UXbdz</div>
+          <button class="copy-btn" onclick="copyWallet('trc20')">Скопировать</button>
         </div>
-      </header>
-
-      <!-- ОБО МНЕ -->
-      <section class="section" id="about">
-        <h2 class="section-title">Обо мне</h2>
-        <p class="section-sub">Стример из Беларуси • TikTok & веб-дизайн</p>
-
-        <div class="about-grid">
-          <article class="photo-card">
-            <div class="photo-inner">
-              <!-- положи файл avatar.jpg рядом с index.html -->
-              <img src="avatar.jpg" alt="Rentik Rush">
-              <div class="photo-tag">Live on TikTok • Rentik</div>
-            </div>
-          </article>
-
-          <article>
-            <h3 class="about-main-title">Rentik Rush</h3>
-            <div class="about-main-sub">Стример • Контент-криэйтор • Web Designer</div>
-
-            <div class="about-badges">
-              <div class="about-badge"><span>🇧🇾</span> Беларусь</div>
-              <div class="about-badge"><span>🎥</span> TikTok Live</div>
-              <div class="about-badge"><span>💻</span> Web Designer 🎨</div>
-            </div>
-
-            <p class="about-text">
-              Привет! Я стример из Беларуси. Люблю живые эфиры, атмосферный чат и красивый визуал.
-              На этой странице — мои основные ссылки и способы поддержать меня: донаты, крипта и платформы,
-              где я появляюсь чаще всего.
-            </p>
-
-            <p class="about-text">
-              Если хочешь залететь на стрим, задонатить или просто смотреть контент — всё нужное ниже 🔥
-            </p>
-
-            <div class="link-row">
-              <a class="link-btn primary" href="https://www.tiktok.com/@rentikrussh/" target="_blank" rel="noreferrer">
-                <span>Перейти в TikTok</span>
-              </a>
-              <a class="link-btn" href="https://boosty.to/rentikrush" target="_blank" rel="noreferrer">
-                <span>Boosty</span>
-                <span class="link-badge">(private content)</span>
-              </a>
-              <a class="link-btn" href="https://boosty.to/rentikrush/single-payment/donation/407427/target?share=target_link" target="_blank" rel="noreferrer">
-                <span>DONATE • Boosty</span>
-              </a>
-            </div>
-          </article>
+        <div class="wallet">
+          <div>Bitcoin (BTC)</div>
+          <div class="address" id="btc">1KC1rpXWtnzzSBYEfAeyYxNX8Q45DE97NN</div>
+          <button class="copy-btn" onclick="copyWallet('btc')">Скопировать</button>
         </div>
-      </section>
-
-      <!-- ПОДДЕРЖАТЬ МЕНЯ -->
-      <section class="section" id="support">
-        <h2 class="section-title">Поддержать меня</h2>
-        <p class="section-sub">Донаты через Boosty и криптовалюту. Спасибо, что заряжаешь мои стримы 🔥</p>
-
-        <div class="cards-grid">
-          <div class="card">
-            <div class="card-title">
-              <span class="icon">💳</span>
-              Boosty (RUB / карты)
-            </div>
-            <div class="card-desc">
-              Удобный способ задонатить с карт и баланса Boosty.
-            </div>
-            <a class="link-btn" style="margin-top:6px; align-self:flex-start"
-               href="https://boosty.to/rentikrush/single-payment/donation/407427/target?share=target_link"
-               target="_blank" rel="noreferrer">
-              Открыть страницу доната
-            </a>
-          </div>
-
-          <div class="card">
-            <div class="card-title">
-              <span class="icon">⚡</span>
-              USDT (TRC20)
-            </div>
-            <div class="card-desc">
-              Донаты в USDT через сеть TRC20.
-            </div>
-            <div class="card-value" id="trc20">
-              TQyqYGDD5Peacbr1vVf8MEczYkhs2UXbdz
-            </div>
-            <div class="copy-inline" onclick="copyWallet('trc20')">
-              Нажми, чтобы скопировать адрес TRC20
-            </div>
-          </div>
-
-          <div class="card">
-            <div class="card-title">
-              <span class="icon">₿</span>
-              Bitcoin (BTC)
-            </div>
-            <div class="card-desc">
-              Донаты в BTC на твой биткоин-кошелёк.
-            </div>
-            <div class="card-value" id="btc">
-              1KC1rpXWtnzzSBYEfAeyYxNX8Q45DE97NN
-            </div>
-            <div class="copy-inline" onclick="copyWallet('btc')">
-              Нажми, чтобы скопировать BTC-адрес
-            </div>
-          </div>
-
-          <div class="card">
-            <div class="card-title">
-              <span class="icon">💠</span>
-              Ethereum (ETH, ERC20)
-            </div>
-            <div class="card-desc">
-              Донаты в ETH по сети ERC20.
-            </div>
-            <div class="card-value" id="eth">
-              0xb1353c61bdedafbabc5d58464ac5b06c404d207f
-            </div>
-            <div class="copy-inline" onclick="copyWallet('eth')">
-              Нажми, чтобы скопировать ETH-адрес
-            </div>
-          </div>
+        <div class="wallet">
+          <div>Ethereum (ERC20)</div>
+          <div class="address" id="eth">0xb1353c61bdedafbabc5d58464ac5b06c404d207f</div>
+          <button class="copy-btn" onclick="copyWallet('eth')">Скопировать</button>
         </div>
-      </section>
+      </div>
 
-      <!-- КОНТАКТЫ / ССЫЛКИ -->
-      <section class="section" id="contacts">
-        <h2 class="section-title">Ссылки и контакты</h2>
-        <p class="section-sub">Где ещё можно меня поймать 👇</p>
-
-        <div class="contacts-grid">
-          <a class="contact-btn" href="https://www.tiktok.com/@rentikrussh/" target="_blank" rel="noreferrer">
-            <div class="contact-title">TikTok</div>
-            <div class="contact-sub">@rentikrussh • основные стримы</div>
-          </a>
-
-          <a class="contact-btn" href="https://boosty.to/rentikrush" target="_blank" rel="noreferrer">
-            <div class="contact-title">Boosty</div>
-            <div class="contact-sub">приватный контент и поддержка</div>
-          </a>
-
-          <a class="contact-btn" href="https://boosty.to/rentikrush/single-payment/donation/407427/target?share=target_link"
-             target="_blank" rel="noreferrer">
-            <div class="contact-title">Разовый донат</div>
-            <div class="contact-sub">разовая поддержка без подписки</div>
-          </a>
-        </div>
-      </section>
-
-      <footer>
-        © <span id="year"></span> <span class="brand">Rentik Rush</span>. Сделано с любовью и GitHub Pages.
-      </footer>
+      <footer>© <span id="year"></span> Rentik Rush • Made with ❤️ & GitHub Pages</footer>
     </div>
   </div>
 
   <script>
-    function copyWallet(id) {
-      const el = document.getElementById(id);
-      if (!el) return;
-      const text = el.textContent.trim();
-      if (!text) return;
-      navigator.clipboard.writeText(text).then(() => {
-        alert('Адрес скопирован: ' + text);
-      });
-    }
-
     document.getElementById('year').textContent = new Date().getFullYear();
+    function copyWallet(id) {
+      const text = document.getElementById(id).textContent;
+      navigator.clipboard.writeText(text);
+      alert('Скопировано: ' + text);
+    }
   </script>
 </body>
 </html>
