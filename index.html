@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Rentik Rush — Официальная страница</title>
+  <title>Rentik Rush — Official page</title>
   <meta name="description" content="Rentik Rush — стример и веб-дизайнер из Беларуси. TikTok, Boosty, донаты и контакты." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -55,7 +55,7 @@
       overflow: hidden;
     }
 
-    /* бегущая неоновая рамка */
+    /* неоновая бегущая рамка */
     .page::before {
       content: "";
       position: absolute;
@@ -353,6 +353,20 @@
       color:var(--orange-soft);
       font-weight:600;
     }
+
+    @media (max-width: 900px) {
+      .about-grid { grid-template-columns:1fr; }
+      .cards-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
+      .contacts-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
+    }
+
+    @media (max-width: 600px) {
+      body { padding:14px 6px 30px; }
+      .page { padding:14px 14px 18px; border-radius:18px; }
+      .page::before { border-radius:18px; }
+      .cards-grid,
+      .contacts-grid { grid-template-columns:1fr; }
+    }
   </style>
 </head>
 <body>
@@ -362,104 +376,208 @@
       <header class="topbar">
         <div class="logo">rentik rush</div>
         <div class="lang">
-          <span>Язык:</span>
-          <button class="lang-btn active" type="button">RU</button>
-          <button class="lang-btn" type="button">EN</button>
+          <span data-i18n="lang_label">Язык:</span>
+          <button id="btn-ru" class="lang-btn active" type="button">RU</button>
+          <button id="btn-en" class="lang-btn" type="button">EN</button>
         </div>
       </header>
 
+      <!-- ОБО МНЕ -->
       <section class="section" id="about">
-        <h2 class="section-title">Обо мне</h2>
-        <p class="section-sub">Стример из Беларуси · TikTok · веб-дизайн</p>
+        <h2 class="section-title" data-i18n="about_title">Обо мне</h2>
+        <p class="section-sub" data-i18n="about_sub">Стример из Беларуси · TikTok · веб-дизайн</p>
 
         <div class="about-grid">
           <article class="photo-card">
             <div class="photo-inner">
               <img src="avatar.jpg" alt="Rentik Rush">
-              <div class="photo-tag">Live • TikTok @rentikrussh</div>
+              <div class="photo-tag" data-i18n="photo_tag">Live • TikTok @rentikrussh</div>
             </div>
           </article>
 
           <article>
-            <h3 class="about-name">Rentik Rush</h3>
-            <div class="about-role">Стример, контент-криэйтор и web-дизайнер 🎥💻</div>
+            <h3 class="about-name" data-i18n="about_name">Rentik Rush</h3>
+            <div class="about-role" data-i18n="about_role">Стример, контент-криэйтор и web-дизайнер 🎥💻</div>
 
             <div class="chips">
-              <div class="chip">🇧🇾 Беларусь</div>
-              <div class="chip">🎥 TikTok Live PRO</div>
-              <div class="chip">💻 Web Designer</div>
+              <div class="chip" data-i18n="chip_country">🇧🇾 Беларусь</div>
+              <div class="chip" data-i18n="chip_tiktok">🎥 TikTok Live PRO</div>
+              <div class="chip" data-i18n="chip_role">💻 Web Designer</div>
             </div>
 
-            <p class="about-text">
+            <p class="about-text" data-i18n="about_p1">
               Привет! Я стример из Беларуси. Люблю живые эфиры, атмосферный чат и красивый визуал.
               Здесь собраны мои основные ссылки, способы поддержки и немного информации обо мне.
             </p>
-            <p class="about-text">
+            <p class="about-text" data-i18n="about_p2">
               Хочешь залететь на стрим, оформить подписку на Boosty или задонатить в крипте —
               всё нужное найдёшь ниже. Спасибо, что становишься частью этого движа ❤️
             </p>
 
             <div class="link-row">
-              <a class="btn-link primary" href="https://www.tiktok.com/@rentikrussh/" target="_blank">TikTok</a>
-              <a class="btn-link" href="https://boosty.to/rentikrush" target="_blank">Boosty</a>
-              <a class="btn-link" href="https://boosty.to/rentikrush/single-payment/donation/407427/target?share=target_link" target="_blank">Donate</a>
+              <a class="btn-link primary" href="https://www.tiktok.com/@rentikrussh/" target="_blank" rel="noreferrer" data-i18n="btn_tiktok">TikTok</a>
+              <a class="btn-link" href="https://boosty.to/rentikrush" target="_blank" rel="noreferrer" data-i18n="btn_boosty">Boosty</a>
+              <a class="btn-link" href="https://boosty.to/rentikrush/single-payment/donation/407427/target?share=target_link" target="_blank" rel="noreferrer" data-i18n="btn_donate">Donate</a>
             </div>
           </article>
         </div>
       </section>
 
+      <!-- ПОДДЕРЖАТЬ -->
       <section class="section" id="support">
-        <h2 class="section-title">Поддержать меня</h2>
-        <p class="section-sub">Твоя поддержка помогает делать стримы лучше 🔥</p>
+        <h2 class="section-title" data-i18n="support_title">Поддержать меня</h2>
+        <p class="section-sub" data-i18n="support_sub">
+          Твоя поддержка помогает делать стримы лучше 🔥
+        </p>
 
         <div class="cards-grid">
           <div class="card">
-            <div class="card-title">USDT (TRC20)</div>
+            <div class="card-title" data-i18n="usdt_title">USDT (TRC20)</div>
             <div class="card-value" id="trc20">TQyqYGDD5Peacbr1vVf8MEczYkhs2UXbdz</div>
-            <div class="copy-inline" onclick="copyWallet('trc20')">Скопировать адрес</div>
+            <div class="copy-inline" onclick="copyWallet('trc20')" data-i18n="copy_addr">Скопировать адрес</div>
           </div>
 
           <div class="card">
-            <div class="card-title">Bitcoin (BTC)</div>
+            <div class="card-title" data-i18n="btc_title">Bitcoin (BTC)</div>
             <div class="card-value" id="btc">1KC1rpXWtnzzSBYEfAeyYxNX8Q45DE97NN</div>
-            <div class="copy-inline" onclick="copyWallet('btc')">Скопировать адрес</div>
+            <div class="copy-inline" onclick="copyWallet('btc')" data-i18n="copy_addr">Скопировать адрес</div>
           </div>
 
           <div class="card">
-            <div class="card-title">Ethereum (ERC20)</div>
+            <div class="card-title" data-i18n="eth_title">Ethereum (ERC20)</div>
             <div class="card-value" id="eth">0xb1353c61bdedafbabc5d58464ac5b06c404d207f</div>
-            <div class="copy-inline" onclick="copyWallet('eth')">Скопировать адрес</div>
+            <div class="copy-inline" onclick="copyWallet('eth')" data-i18n="copy_addr">Скопировать адрес</div>
           </div>
         </div>
       </section>
 
+      <!-- КОНТАКТЫ -->
       <section class="section" id="contacts">
-        <h2 class="section-title">Связаться со мной</h2>
-        <p class="section-sub">Где меня найти:</p>
+        <h2 class="section-title" data-i18n="contacts_title">Связаться со мной</h2>
+        <p class="section-sub" data-i18n="contacts_sub">Где меня найти:</p>
 
         <div class="contacts-grid">
-          <a class="contact" href="https://www.tiktok.com/@rentikrussh/" target="_blank">
-            <div>TikTok</div><div class="contact-sub">@rentikrussh</div>
+          <a class="contact" href="https://www.tiktok.com/@rentikrussh/" target="_blank" rel="noreferrer">
+            <div data-i18n="contact_tiktok_title">TikTok</div>
+            <div class="contact-sub" data-i18n="contact_tiktok_sub">@rentikrussh</div>
           </a>
-          <a class="contact" href="https://boosty.to/rentikrush" target="_blank">
-            <div>Boosty</div><div class="contact-sub">Приватный контент</div>
+          <a class="contact" href="https://boosty.to/rentikrush" target="_blank" rel="noreferrer">
+            <div data-i18n="contact_boosty_title">Boosty</div>
+            <div class="contact-sub" data-i18n="contact_boosty_sub">Приватный контент</div>
           </a>
-          <a class="contact" href="https://boosty.to/rentikrush/single-payment/donation/407427/target?share=target_link" target="_blank">
-            <div>Разовый донат</div><div class="contact-sub">Поддержка без подписки</div>
+          <a class="contact" href="https://boosty.to/rentikrush/single-payment/donation/407427/target?share=target_link" target="_blank" rel="noreferrer">
+            <div data-i18n="contact_donate_title">Разовый донат</div>
+            <div class="contact-sub" data-i18n="contact_donate_sub">Поддержка без подписки</div>
           </a>
         </div>
       </section>
 
-      <footer>© <span id="year"></span> <span class="brand">Rentik Rush</span>. Сделано с ❤️ и GitHub Pages.</footer>
+      <footer>
+        © <span id="year"></span> <span class="brand">Rentik Rush</span>.
+        <span data-i18n="footer_text">Сделано с ❤️ и GitHub Pages.</span>
+      </footer>
     </div>
   </main>
 
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
+
+    const i18n = {
+      ru: {
+        lang_label: "Язык:",
+        about_title: "Обо мне",
+        about_sub: "Стример из Беларуси · TikTok · веб-дизайн",
+        photo_tag: "Live • TikTok @rentikrussh",
+        about_name: "Rentik Rush",
+        about_role: "Стример, контент-криэйтор и web-дизайнер 🎥💻",
+        chip_country: "🇧🇾 Беларусь",
+        chip_tiktok: "🎥 TikTok Live PRO",
+        chip_role: "💻 Web Designer",
+        about_p1: "Привет! Я стример из Беларуси. Люблю живые эфиры, атмосферный чат и красивый визуал. Здесь собраны мои основные ссылки, способы поддержки и немного информации обо мне.",
+        about_p2: "Хочешь залететь на стрим, оформить подписку на Boosty или задонатить в крипте — всё нужное найдёшь ниже. Спасибо, что становишься частью этого движа ❤️",
+        btn_tiktok: "TikTok",
+        btn_boosty: "Boosty",
+        btn_donate: "Donate",
+        support_title: "Поддержать меня",
+        support_sub: "Твоя поддержка помогает делать стримы лучше 🔥",
+        usdt_title: "USDT (TRC20)",
+        btc_title: "Bitcoin (BTC)",
+        eth_title: "Ethereum (ERC20)",
+        copy_addr: "Скопировать адрес",
+        contacts_title: "Связаться со мной",
+        contacts_sub: "Где меня найти:",
+        contact_tiktok_title: "TikTok",
+        contact_tiktok_sub: "@rentikrussh",
+        contact_boosty_title: "Boosty",
+        contact_boosty_sub: "Приватный контент",
+        contact_donate_title: "Разовый донат",
+        contact_donate_sub: "Поддержка без подписки",
+        footer_text: "Сделано с ❤️ и GitHub Pages."
+      },
+      en: {
+        lang_label: "Language:",
+        about_title: "About me",
+        about_sub: "Streamer from Belarus · TikTok · web design",
+        photo_tag: "Live • TikTok @rentikrussh",
+        about_name: "Rentik Rush",
+        about_role: "Streamer, content creator and web designer 🎥💻",
+        chip_country: "🇧🇾 Belarus",
+        chip_tiktok: "🎥 TikTok Live PRO",
+        chip_role: "💻 Web Designer",
+        about_p1: "Hi! I'm a streamer from Belarus. I love live streams, cozy chat vibes and clean visuals. Here you can find my main links, ways to support me and a bit of info.",
+        about_p2: "Want to join the stream, support on Boosty or donate in crypto — everything you need is below. Thank you for being part of this journey ❤️",
+        btn_tiktok: "TikTok",
+        btn_boosty: "Boosty (private content)",
+        btn_donate: "Donate",
+        support_title: "Support me",
+        support_sub: "Your support helps me make streams better 🔥",
+        usdt_title: "USDT (TRC20)",
+        btc_title: "Bitcoin (BTC)",
+        eth_title: "Ethereum (ERC20)",
+        copy_addr: "Copy address",
+        contacts_title: "Contact me",
+        contacts_sub: "Where you can find me:",
+        contact_tiktok_title: "TikTok",
+        contact_tiktok_sub: "@rentikrussh — main streams",
+        contact_boosty_title: "Boosty",
+        contact_boosty_sub: "Private content & support",
+        contact_donate_title: "One-time donation",
+        contact_donate_sub: "Support without subscription",
+        footer_text: "Made with ❤️ and GitHub Pages."
+      }
+    };
+
+    const i18nEls = document.querySelectorAll('[data-i18n]');
+    const btnRu = document.getElementById('btn-ru');
+    const btnEn = document.getElementById('btn-en');
+
+    function applyLang(lang) {
+      const dict = i18n[lang] || i18n.ru;
+      i18nEls.forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (dict[key]) el.textContent = dict[key];
+      });
+      document.documentElement.lang = lang;
+      btnRu.classList.toggle('active', lang === 'ru');
+      btnEn.classList.toggle('active', lang === 'en');
+      localStorage.setItem('rentik_lang', lang);
+    }
+
+    btnRu.addEventListener('click', () => applyLang('ru'));
+    btnEn.addEventListener('click', () => applyLang('en'));
+
+    const saved = localStorage.getItem('rentik_lang') || 'ru';
+    applyLang(saved);
+
     function copyWallet(id) {
       const el = document.getElementById(id);
+      if (!el) return;
       const text = el.textContent.trim();
-      navigator.clipboard.writeText(text).then(() => alert('Скопировано: ' + text));
+      navigator.clipboard.writeText(text).then(() => {
+        const lang = localStorage.getItem('rentik_lang') || 'ru';
+        const msg = lang === 'ru' ? 'Скопировано: ' : 'Copied: ';
+        alert(msg + text);
+      });
     }
   </script>
 </body>
